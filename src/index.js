@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: 'https://637000d17145a92704d73c67--jovial-dusk-16c550.netlify.app/'
+    origin: 'https://637000d17145a92704d73c67--jovial-dusk-16c550.netlify.app'
 }));
 app.use(cookieParser());
 app.use(express.json());
