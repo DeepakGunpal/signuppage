@@ -41,7 +41,7 @@ const verifyOtp = async (req, res) => {
         if (!verifyOtp) throw new Error('Incorrect OTP');
         const user = await userModel.findOne({ number: req.body.number, isDeleted: false });
         //generateTOken and setHeader
-        const token = userModel.generateToken(user);
+        const token = await userModel.generateToken(user);
         return res.status(200).send({ status: true, Token: token, data: user });
     } catch (error) {
         res.status(401).send({ status: false, message: error.message });

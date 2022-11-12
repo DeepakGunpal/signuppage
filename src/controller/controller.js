@@ -34,7 +34,7 @@ const login = async (req, res) => {
 
 const sendOTP = async (req, res) => {
     try {
-        if (!req.body.number || req.body.number.length !== 10) throw new Error("Invalid number");
+        if (!req.body.number || req.body.number.toString().length !== 10) throw new Error("Invalid number");
         const user = await userModel.findOne({ number: req.body.number, isDeleted: false });
         if (!user) throw new Error(`${req.body.number} is not registered.`);
         const otp = otpGenerator.generate(6, {
@@ -48,8 +48,9 @@ const sendOTP = async (req, res) => {
             message: `${otp} is your OTP for user registration`,
             numbers: [number]
         }
-        fast2sms.sendMessage(options)
-            .catch((err) => res.status(400).send({ status: false, message: err.message }));
+        console.log(options);
+        // fast2sms.sendMessage(options)
+        //     .catch((err) => res.status(400).send({ status: false, message: err.message }));
 
         res.status(200).send({ status: true, message: 'otp sent successfully' });
 

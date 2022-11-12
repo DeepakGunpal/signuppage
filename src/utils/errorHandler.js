@@ -1,6 +1,6 @@
 const handleErrors = (err) => {
-    // console.log("err", err.message, 'code', err.code);
-    const errors = { err: 'Bad Request' };
+    console.log("err", err.message, 'code', err.code);
+    const errors = { err: 'Bad Request', message: err.message };
     if (err.code === 11000) {
         errors[Object.keys(err.keyValue)[0]] = `${Object.keys(err.keyValue)[0]} is not available`;
     }
