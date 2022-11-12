@@ -41,16 +41,16 @@ const sendOTP = async (req, res) => {
             lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false
         });
         const number = parseInt(req.body.number);
-        const otpDoc = await otpModel.create({ number, otp });
+        await otpModel.create({ number, otp });
         //todo send otp fia fast2sms
         let options = {
             authorization: process.env.FAST2SMS_AUTH_KEY,
             message: `${otp} is your OTP for user registration`,
             numbers: [number]
         }
-        console.log(options);
-        // fast2sms.sendMessage(options)
-        //     .catch((err) => res.status(400).send({ status: false, message: err.message }));
+        // console.log(options);
+        fast2sms.sendMessage(options)
+            .catch((err) => res.status(400).send({ status: false, message: err.message }));
 
         res.status(200).send({ status: true, message: 'otp sent successfully' });
 
