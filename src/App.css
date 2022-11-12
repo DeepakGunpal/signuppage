@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
+.home_button_container{
+    position: absolute;
+    color: rgb(240, 236, 236);
+    left: 3%;
+    top: 2%;
+    background-color: rgb(28, 23, 23);
+    padding: 8px 18px;
+    border-radius: 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.socials_container{
+    display: flex;
+    font-size: xx-large;
+    gap: 1rem;
+    background-color: rgb(28, 23, 23);
+    position: absolute;
+    top: 5%;
+    right: 6%;
+    padding: 5px 15px;
+    border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* ==========Media  Queries (medium devices) =============*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+@media screen and (max-width: 1024px) {
+    .socials_container{
+        top: 4%;
+        right: 6%;
+    }
+ }
+ 
+ /* ==========Media  Queries (small devices) =============*/
+ 
+ @media screen and (max-width: 600px) {
+    .socials_container{
+        top: 14%;
+        right: 24%;
+    }
+    .home_button_container{
+        left: 30%;
+    }
+ }
