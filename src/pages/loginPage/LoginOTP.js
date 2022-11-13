@@ -17,9 +17,9 @@ const LoginOTP = ({ setOtpLogin, setLoginUser }) => {
     const sendOTP = async (data) => {
         const res = await axiosInstance.post('/sendOTP', data)
             .catch((err) => {
-                window.alert(Object.values(err.response.data.message)[0]);
+                window.alert(err.response.data.message);
             })
-        if (res.status === 200) {
+        if (res && res.status === 200) {
             window.alert(`OTP sent on ${userLoginDetails.number}`)
             setDisplaySendOTP('none')
             setDisplayVerifyOTP('unset')

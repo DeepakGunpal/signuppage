@@ -18,7 +18,7 @@ const LoginPage = ({ setLoginUser }) => {
     const userLogin = async (data) => {
         const res = await axiosInstance.post('/login', data)
             .catch((err) => { window.alert(err.response.data.message); })
-        if (res.status === 200) {
+        if (res && res.status === 200) {
             Cookies.set('jwt', res.data.Token, { secure: true, expires: 1 });
             Cookies.set('user', res.data.data._id, { secure: true, expires: 1 });
             setLoginUser(res.data.data._id);

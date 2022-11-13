@@ -20,7 +20,7 @@ const HomePage = ({ setLoginUser }) => {
       .catch((err) => {
         window.alert(err.response.data.message);
       })
-    if (res.status === 200) setUserList(res.data.data);
+    if (res && res.status === 200) setUserList(res.data.data);
   }
 
   useEffect(() => {

@@ -22,7 +22,7 @@ const UserDetails = ({ setLoginUser }) => {
             .catch((err) => {
                 window.alert(err.response.data.message);
             })
-        if (res.status === 200) {
+        if (res && res.status === 200) {
             window.alert("Saved");
             setLoggedInUser(res.data.data._id);
         };
@@ -45,7 +45,7 @@ const UserDetails = ({ setLoginUser }) => {
                 setLoginUser(null);
                 navigate('/');
             })
-        if (res.status === 200) setUserUpdates(res.data.data);
+        if (res && res.status === 200) setUserUpdates(res.data.data);
     }
 
     useEffect(() => {
@@ -66,14 +66,14 @@ const UserDetails = ({ setLoginUser }) => {
                 userUpdates && <div className='details_container'>
                     <h1>Welcome {userUpdates.firstName} {userUpdates.lastName}</h1>
                     <div className='other_details_container'>
-                        <p>First Name: <TextField variant='standard' name='firstName' value={userUpdates.firstName} style={style} onChange={handleChange} /></p>
-                        <p>Last Name: <TextField variant='standard' name='lastName' value={userUpdates.lastName} style={style} onChange={handleChange} /></p>
-                        <p>userName: <TextField variant='standard' name='userName' value={userUpdates.userName} style={style} onChange={handleChange} /></p>
-                        <p>Number: <TextField variant='standard' name='number' value={userUpdates.number} style={style} onChange={handleChange} /></p>
-                        <p>Email: <TextField variant='standard' name='email' value={userUpdates.email} style={style} onChange={handleChange} /></p>
-                        <p>Password: <TextField variant='standard' name='password' style={style} onChange={handleChange} /></p>
+                        <div>First Name: <TextField variant='standard' name='firstName' value={userUpdates.firstName} style={style} onChange={handleChange} /></div>
+                        <div>Last Name: <TextField variant='standard' name='lastName' value={userUpdates.lastName} style={style} onChange={handleChange} /></div>
+                        <div>userName: <TextField variant='standard' name='userName' value={userUpdates.userName} style={style} onChange={handleChange} /></div>
+                        <div>Number: <TextField variant='standard' name='number' value={userUpdates.number} style={style} onChange={handleChange} /></div>
+                        <div>Email: <TextField variant='standard' name='email' value={userUpdates.email} style={style} onChange={handleChange} /></div>
+                        <div>Password: <TextField variant='standard' name='password' style={style} onChange={handleChange} /></div>
                         <br />
-                        <Button variant="outlined" style={{ backgroundColor: 'rgb(28, 23, 23)', color: 'white', fontSize: 'large' }} onClick={saveChanges}>Save Changes</Button>
+                        <div><Button variant="outlined" style={{ backgroundColor: 'rgb(28, 23, 23)', color: 'white', fontSize: 'large', width: '50%' }} onClick={saveChanges}>Save Changes</Button></div>
                     </div>
                 </div>
             }

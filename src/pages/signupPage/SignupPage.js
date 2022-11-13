@@ -22,8 +22,8 @@ const SignupPage = () => {
         const res = await axiosInstance.post('/signup', data)
             .catch((err) => {
                 window.alert(Object.values(err.response.data.message)[0]);
-            })
-        if (res.status === 201) {
+            })           
+        if (res && res.status === 201) {
             window.alert("Registration successful");
             navigate('/login');
         };
