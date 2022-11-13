@@ -1,6 +1,6 @@
 const handleErrors = (err) => {
     console.log("err", err.message, 'code', err.code);
-    const errors = { err: 'Bad Request', message: err.message };
+    const errors = {};
     if (err.code === 11000) {
         errors[Object.keys(err.keyValue)[0]] = `${Object.keys(err.keyValue)[0]} is not available`;
     }
@@ -10,6 +10,7 @@ const handleErrors = (err) => {
             Object.values(err.errors).forEach(({ path, message }) => errors[path] = message);
         }
     }
+    errors.err = 'Bad Request', errors.message = err.message;
     return errors;
 }
 

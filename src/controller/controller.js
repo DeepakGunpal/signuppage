@@ -55,8 +55,7 @@ const sendOTP = async (req, res) => {
         res.status(200).send({ status: true, message: 'otp sent successfully' });
 
     } catch (error) {
-        const err = handleErrors(error);
-        res.status(400).send({ status: true, message: err });
+        res.status(400).send({ status: true, message: error.message });
     }
 }
 
